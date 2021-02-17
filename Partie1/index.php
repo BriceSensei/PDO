@@ -17,21 +17,23 @@ require_once 'controllers/index-controller.php'
 
 <body>
 
-<!-- On rows -->
-<tr class="bg-primary">...</tr>
-<tr class="bg-success">...</tr>
-<tr class="bg-warning">...</tr>
-<tr class="bg-danger">...</tr>
-<tr class="bg-info">...</tr>
+    <!-- On rows -->
+    <tr class="bg-primary">...</tr>
+    <tr class="bg-success">...</tr>
+    <tr class="bg-warning">...</tr>
+    <tr class="bg-danger">...</tr>
+    <tr class="bg-info">...</tr>
 
-<!-- On cells (`td` or `th`) -->
-<tr>
-  <td class="bg-primary">...</td>
-  <td class="bg-success">...</td>
-  <td class="bg-warning">...</td>
-  <td class="bg-danger">...</td>
-  <td class="bg-info">...</td>
-</tr>
+    <!-- On cells (`td` or `th`) -->
+    <tr>
+        <td class="bg-primary">...</td>
+        <td class="bg-success">...</td>
+        <td class="bg-warning">...</td>
+        <td class="bg-danger">...</td>
+        <td class="bg-info">...</td>
+    </tr>
+
+    
 
     <h1 class="text-center m-3 pb-2">Affichage des données</h1>
 
@@ -45,18 +47,20 @@ require_once 'controllers/index-controller.php'
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <?php
                 // je fais un foreach pour parcourir mon tableau
-                foreach($allClientsArray as $client){ ?>
-                <tr>
-                    <th class="bg-info"><?= $client['id'] ?></th>
-                    <td class="bg-danger"><?= $client['lastname'] ?></td>
-                    <td class="bg-info"><?= $client['firstname'] ?></td>
-                </tr>
+                foreach ($allClientsArray as $client) { ?>
+                    <tr class="<?= ($client['id'] % 2) ? "table-info" : "table-danger" ?> text-dark">
+                        <th><?= $client['id'] ?></th>
+                        <td><?= $client['lastname'] ?></td>
+                        <td><?= $client['firstname'] ?></td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
     </div>
+
+<hr>
 
     <h1 class="text-center m-3 pb-2">Exercice 2</h1>
 
@@ -69,19 +73,19 @@ require_once 'controllers/index-controller.php'
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <?php
                 // je fais un foreach pour parcourir mon tableau
-                foreach($ShowTypeArray as $show){ ?>
-                <tr>
-                    <th class="bg-info"><?= $show['id'] ?></th>
-                    <td class="bg-danger"><?= $show['type'] ?></td>
-                </tr>
+                foreach ($ShowTypeArray as $show) { ?>
+                    <tr class="<?= ($client['id'] % 2) ? "table-info" : "table-danger" ?> text-dark">
+                        <th><?= $show['id'] ?></th>
+                        <td ><?= $show['type'] ?></td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
     </div>
 
-    
+
     <h1 class="text-center m-3 pb-2">Exercice 3</h1>
 
     <div class="d-flex justify-content-center">
@@ -94,14 +98,14 @@ require_once 'controllers/index-controller.php'
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <?php
                 // je fais un foreach pour parcourir mon tableau
-                foreach($allClientsArrayLimit as $client){ ?>
-                <tr>
-                    <th class="bg-info"><?= $client['id'] ?></th>
-                    <td class="bg-danger"><?= $client['lastname'] ?></td>
-                    <td class="bg-info"><?= $client['firstname'] ?></td>
-                </tr>
+                foreach ($allClientsArrayLimit as $client) { ?>
+                    <tr class="<?= ($client['id'] % 2) ? "table-info" : "table-danger" ?> text-dark">
+                        <th><?= $client['id'] ?></th>
+                        <td><?= $client['lastname'] ?></td>
+                        <td><?= $client['firstname'] ?></td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
@@ -121,22 +125,22 @@ require_once 'controllers/index-controller.php'
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <?php
                 // je fais un foreach pour parcourir mon tableau
-                foreach($allClientsArrayCard as $client){ ?>
-                <tr>
-                    <th class="bg-info"><?= $client['id'] ?></th>
-                    <td class="bg-danger"><?= $client['lastname'] ?></td>
-                    <td class="bg-info"><?= $client['firstname'] ?></td>
-                    <td class="bg-danger"><?= $client['card'] ?></td>
-                </tr>
+                foreach ($allClientsArrayCard as $client) { ?>
+                    <tr class="<?= ($client['id'] % 2) ? "table-info" : "table-danger" ?> text-dark">
+                        <th><?= $client['id'] ?></th>
+                        <td><?= $client['lastName'] ?></td>
+                        <td><?= $client['firstName'] ?></td>
+                        <td><?= $client['cardNumber'] ?></td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
     </div>
 
 
-    <h1 class="text-center m-3 pb-2">Exercice 5</h1> 
+    <h1 class="text-center m-3 pb-2">Exercice 5</h1>
 
     <div class="d-flex justify-content-center">
         <table class="table table-responsive-sm table-striped table-dark col-6 text-center">
@@ -148,18 +152,82 @@ require_once 'controllers/index-controller.php'
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <?php
                 // je fais un foreach pour parcourir mon tableau
-                foreach($allClientsArrayLetter as $client){ ?>
-                <tr>
-                    <th class="bg-info"><?= $client['id'] ?></th>
-                    <td class="bg-danger"><?= $client['lastname'] ?></td>
-                    <td class="bg-info"><?= $client['firstname'] ?></td>
-                </tr>
+                foreach ($allClientsArrayLetter as $client) { ?>
+                    <tr class="<?= ($client['id'] % 2) ? "table-info" : "table-danger" ?> text-dark">
+                        <th><?= $client['id'] ?></th>
+                        <td><?= $client['lastname'] ?></td>
+                        <td><?= $client['firstname'] ?></td>
+                    </tr>
                 <?php } ?>
             </tbody>
         </table>
     </div>
+
+
+    <h1 class="text-center m-3 pb-2">Exercice 6</h1>
+
+    <div class="d-flex justify-content-center">
+        <table class="table table-responsive-sm table-striped table-dark col-6 text-center">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">performer</th>
+                    <th scope="col">title</th>
+                    <th scope="col">date</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // je fais un foreach pour parcourir mon tableau
+                foreach ($ShowsArray as $Shows) { ?>
+                    <tr class="<?= ($Shows['id'] % 2) ? "table-info" : "table-danger" ?> text-dark">
+                        <th scope="row"><?= $Shows['id'] ?></th>
+                        <td><?= $Shows['performer'] ?></td>
+                        <td><?= $Shows['title'] ?></td>
+                        <td><?= $Shows['date'] ?></td>
+                        <td><?= $Shows['startTime'] ?></td>
+
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
+    <h1 class="text-center m-3 pb-2">Exercice 7</h1>
+
+    <div class="d-flex justify-content-center">
+        <table class="table table-responsive-sm table-striped table-dark col-6 text-center">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">NOM</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Date de Naissance</th>
+                    <th scope="col">Carte de fidélité</th>
+                    <th scope="col">N° de Carte</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // je fais un foreach pour parcourir mon tableau
+                foreach ($allClientsArrayExo7 as $client) { ?>
+                    <tr class="<?= ($client['id'] % 2) ? "table-info" : "table-danger" ?> text-dark">
+                        <th><?= $client['id'] ?></th>
+                        <td><?= $client['lastName'] ?></td>
+                        <td><?= $client['firstName'] ?></td>
+                        <td><?= $client['birthDate'] ?></td>
+                        <td><?= $client['card'] ==1 ? 'oui' : 'non' ?></td>
+                        <td><?= $client['cardNumber'] ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
