@@ -1,8 +1,7 @@
+
 <?php
-require_once 'controllers/index-controller.php'
+require_once '../controllers/index-controller.php';
 ?>
-
-
 <!doctype html>
 <html lang="fr">
 
@@ -18,33 +17,6 @@ require_once 'controllers/index-controller.php'
 </head>
 
 <body>
-
-<nav class="nav">
-        <div class="container">
-            <div class="logo">
-                <a href="#">Hospitale 2N</a>
-            </div>
-            <div id="mainListDiv" class="main_list">
-                <ul class="navlinks">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="/Partie2/models/ajoutPatients.php">Ajouter Patients</a></li>
-                    <li><a href="#">Liste Patients</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-            <span class="navTrigger">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
-        </div>
-    </nav>
-
-    <section class="home">
-    </section>
-
-<!-- 
-
 <h1 class="text-center m-3 pb-2">Affichage des données</h1>
 
 <div class="d-flex justify-content-center">
@@ -72,13 +44,11 @@ require_once 'controllers/index-controller.php'
             <?php } ?>
         </tbody>
     </table>
-</div> -->
+</div>
 <div class="d-flex justify-content-center m-5">
 <a href="/Partie2/models/ajoutPatients.php" class="btn btn-primary">Ajouter Patients</a>
-<a href="/Partie2/models/patients.php" class="btn btn-danger">Liste Patients</a>
 </div>
 
-    <!-- Optional JavaScript -->
 
     <!-- Jquery needed -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

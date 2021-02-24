@@ -22,6 +22,7 @@ require_once '../controllers/ajoutPatients-controller.php';
         <form class="container col-4" action="/Partie2/models/ajoutPatients.php" method="POST">
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row m-4">
+            <p class="h3 text-info"><?= $messages['addPatient']?? ''?></p>
                 <div class="col">
                     <div class="form-outline">
                         <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Bernard" value="<?= isset($_POST['lastName']) ? htmlspecialchars($_POST['lastName']) : '' ?>" required>
@@ -52,7 +53,7 @@ require_once '../controllers/ajoutPatients-controller.php';
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="0606060606" value="<?= isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : '' ?>" required>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="0606060606" value="<?= isset($_POST['phoneNumber']) ? $_POST['phoneNumber'] : '' ?>" required>
                     <label for="phoneNumber" class="form-label">Numéro de téléphone du patient</label>
                     <div class="text-danger">
                         <span><?= isset($errorMessages['phoneNumber']) ? $errorMessages['phoneNumber'] : '' ?></span>

@@ -391,10 +391,6 @@ body {
 #container{
     width: 100%;
     height: 100vh;
-    background-color: #aeb1b0;
-    background-position: center;
-    background-size: cover;
-
 }
 
 
@@ -405,5 +401,10 @@ form {
     top: 50%;
     transform: translate(-50%, -50%); 
     background-color: #fafafa;
-    box-shadow: 22px 25px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 22px 20px 25px 17px rgba(0, 0, 0, 0.4)
+    
+}
+
+.col-4{
+    border: solid 2px;
 }

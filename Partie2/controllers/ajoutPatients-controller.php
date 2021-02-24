@@ -1,7 +1,14 @@
 <?php
+
+require_once '../models/database.php';
+require_once '../models/listePatients.php';
+
 $regexName = '/^[a-zA-Z]+$/';
 $regexBirthDate = '/^\d{4}(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1])$/';
 $regexPhoneNumber = '/^0[1-68]([-. ]?[0-9]{2}){4}+$/';
+
+$errors = [];
+$messages = [];
 
 if (isset($_POST['submit'])) {
 
@@ -29,11 +36,22 @@ if (isset($_POST['submit'])) {
         if (!preg_match($regexBirthDate, $_POST['birthDate'])) {
             $errorMessages['birthDate'] = 'Veuillez saisir une date valide.';
         }
-        if ($_POST['birthDate'] >= date('Y-m-d')){
+        if ($_POST['birthDate'] >= date('Y-m-d')) {
             $errorMessages['birthDate'] = 'Date impossible !';
         }
         if (empty($_POST['birthDate'])) {
             $errorMessages['birthDate'] = 'Veuillez saisir une date.';
+        }
+    }
+
+    //email
+    if (isset($_POST['mail'])) {
+        //filtre pour éviter une regex
+        if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+            $errorMessages['mail'] = 'Veuillez saisir une adresse mail valide';
+        }
+        if (empty($_POST['mail'])) {
+            $errorMessages['mail'] = 'Veuillez saisir une adresse email.';
         }
     }
 
@@ -47,15 +65,23 @@ if (isset($_POST['submit'])) {
         }
     }
 
-        //email
-        if (isset($_POST['mail'])) {
-            //filtre pour éviter une regex
-            if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-                $errorMessages['mail'] = 'Veuillez saisir une adresse mail valide';
-            }
-            if (empty($_POST['mail'])) {
-                $errorMessages['mail'] = 'Veuillez saisir une adresse email.';
-            }
-        }
+    if (empty($errors)){
+        $patientObj = new Patient;
 
+        //création d'un tableau contenant toutes les infos du formulaire
+
+        $patientDetail = [
+            'lastName'=> htmlspecialchars($_POST['lastName']),
+            'firstName'=> htmlspecialchars($_POST['firstName']),
+            'birthDate'=> htmlspecialchars($_POST['birthDate']),
+            'phoneNumber'=> htmlspecialchars($_POST['phoneNumber']),
+            'email'=> htmlspecialchars($_POST['email']),
+        ];
+
+        if($patientObj->addPatient($patientDetail)){
+            $messages['addPatient'] = 'Patient enregistré';
+        }else {
+            $messages ['addPatient'] = 'Patient non enregistré';
+        }
+    }
 }
