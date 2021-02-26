@@ -75,4 +75,51 @@ class Patients extends Database
             return false;
         }
     }
+
+
+    public function updatePatient(array $patientDetails)
+    {
+        // requete me permettant de modifier mon user
+        $query = 'UPDATE `patients` SET
+        `lastname` = :lastname,
+        `firstname` = :firstname,
+        `birthdate` = :birthdate,
+        `phone` = :phone,
+        `mail` = :mail
+        WHERE id = :id';
+
+        // je prepare requête à l'aide de la methode prepare pour me premunir des injections SQL 
+        $updatePatientQuery = $this->dataBase->prepare($query);
+
+        // On bind les values pour renseigner les marqueurs nominatifs
+        $updatePatientQuery->bindValue(':lastname', $patientDetails['lastname'], PDO::PARAM_STR);
+        $updatePatientQuery->bindValue(':firstname', $patientDetails['firstname'], PDO::PARAM_STR);
+        $updatePatientQuery->bindValue(':birthdate', $patientDetails['birthdate'], PDO::PARAM_STR);
+        $updatePatientQuery->bindValue(':phone', $patientDetails['phone'], PDO::PARAM_STR);
+        $updatePatientQuery->bindValue(':mail', $patientDetails['mail'], PDO::PARAM_STR);
+        $updatePatientQuery->bindValue(':id', $patientDetails['id'], PDO::PARAM_STR);
+
+        if ($updatePatientQuery->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Méthode permettant d'obtenir la liste de tous les patients à insérer dans le select de notre prise de RDV
+     *
+     * @return array
+     */
+    public function getAllPatientsForSelect()
+    {
+        // Nous stockons ici notre requête pour permettre d'obtenir tous nos patients
+        $query = 'SELECT `id`, `lastname`, `firstname` FROM `patients` ORDER BY `lastname`';
+
+        // Nous executons notre requête à l'aide de la méthode query
+        $getAllPatientsQuery = $this->dataBase->query($query);
+
+        // j'effectue la methode fetchAll pour obtenir le resultat sous forme de tableau
+        return $getAllPatientsQuery->fetchAll();
+    }
 }

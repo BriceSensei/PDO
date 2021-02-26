@@ -4,8 +4,8 @@ class Database
 {
     protected $dataBase;
 
-    private $user = 'PDO';
-    private $password = 'pdo';
+    private $user = 'testpdo';
+    private $password = 'testpdo';
     private $dbName = 'hospitale2n';
 
     public function __construct()

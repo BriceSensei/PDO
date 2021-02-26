@@ -1,5 +1,5 @@
 <?php
-require_once '../controllers/controller-listPatients.php';
+require_once '../controllers/controller-listAppointments.php';
 ?>
 
 <!DOCTYPE html>
@@ -21,28 +21,28 @@ require_once '../controllers/controller-listPatients.php';
 
       <div class="container border border-secondary shadow mt-5 p-4 col-6">
 
-         <div class="text-center text-secondary"><i class="fas fa-users p-2 logo"></i></div>
-         <p class="text-center text-secondary text-uppercase mb-3 h3">Liste des patients</p>
+         <div class="text-center text-secondary"><i class="far fa-calendar-alt p-2 logo"></i></div>
+         <p class="text-center text-secondary text-uppercase mb-3 h3">Liste des rendez-vous</p>
 
-         <form action="view-detailsPatient.php" method="GET">
+         <form action="view-detailsAppointment.php" method="GET">
             <table class="table table-sm table table-hover">
                <thead>
                   <tr class="table-secondary">
-                     <th class="align-middle">N°</th>
-                     <th class="align-middle">Nom</th>
-                     <th class="align-middle">Prénom</th>
+                     <th class="align-middle">Date</th>
+                     <th class="align-middle">Heure</th>
+                     <th class="align-middle">Patient</th>
                      <th class="align-middle"></th>
                   </tr>
                </thead>
                <tbody>
 
-                  <?php foreach ($allPatientsArray as $patient) { ?>
+                  <?php foreach ($allAppointmentsArray as $appointment) { ?>
                      <tr>
-                        <td class="align-middle"><?= $patient['id'] ?></td>
-                        <td class="align-middle"><?= $patient['lastname'] ?></td>
-                        <td class="align-middle"><?= $patient['firstname'] ?></td>
+                        <td class="align-middle"><?= $appointment['date'] ?></td>
+                        <td class="align-middle"><?= $appointment['hour'] ?></td>
+                        <td class="align-middle"><?= $appointment['patient'] ?></td>
                         <td class="align-middle text-center">
-                           <button type="submit" class="btn btn-outline-dark btn-sm" name="idPatient" value="<?= $patient['id'] ?>">+ infos</button>
+                           <button type="submit" class="btn btn-outline-dark btn-sm" name="idAppointment" value="<?= $appointment['id'] ?>">+ détails</button>
                            <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
                         </td>
                      </tr>
@@ -53,10 +53,10 @@ require_once '../controllers/controller-listPatients.php';
          </form>
 
          <!-- Mise en place d'une ternaire pour permettre d'afficher un message si jamais le tableau est vide -->
-         <?= count($allPatientsArray) == 0 ? '<p class="h6 text-center">Vous n\'avez pas de patients d\'enregistrés<p>' : '' ?>
+         <?= count($allAppointmentsArray) == 0 ? '<p class="h6 text-center">Vous n\'avez pas de rendez-vous d\'enregistré<p>' : '' ?>
 
          <div class="text-center mt-4">
-            <a type="button" href="view-addPatients.php" class="btn btn-sm btn-outline-secondary">Ajouter un patient</a>
+            <a type="button" href="view-addAppointments.php" class="btn btn-sm btn-outline-secondary">Prendre un nouveau rendez-vous</a>
          </div>
 
       </div>
